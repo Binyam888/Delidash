@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const foodShema = new mongoose.Schema({
+const foodShema =  mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -22,4 +22,4 @@ const foodShema = new mongoose.Schema({
     required: true,
   },
 },{timestamps:true});
-export const FoodModel = mongoose.models.food || mongoose.model("food",foodShema)
+export const FoodModel =  mongoose.model("food",foodShema)
