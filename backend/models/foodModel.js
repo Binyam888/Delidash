@@ -21,4 +21,5 @@ const foodShema = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+},{timestamps:true});
+export const FoodModel = mongoose.models.food || mongoose.model("food",foodShema)
