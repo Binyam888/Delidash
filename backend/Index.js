@@ -21,4 +21,5 @@ app.listen(port,()=>{
 app.use(express.json())
 app.use(cors())
 app.use("/api/food",foodRouter)
+app.use("/images",express.static("uploads"))
 
