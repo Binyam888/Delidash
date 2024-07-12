@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { assets } from "../assets/assets";
+import { assets, url } from "../assets/assets";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function Add() {
   const [image, setImage] = useState("");
@@ -10,28 +12,90 @@ function Add() {
     category: "Salad",
   });
 
+  const [error, setError] = useState({});
+
   const handleChange = (event) => {
     //destucturing name and value from target
+
     const { name, value } = event.target;
     // name is used to identify which feild is need to change based on that the inputed value will be added
     setData((data) => ({ ...data, [name]: value }));
+
+    validateForm();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("description", data.description);
-    formData.append("price", data.price);
-    formData.append("category", data.category);
-    formData.append("image", image);
-    console.log(formData);
+  const validateForm = () => {
+    let newError = {}; // to store error
+
+    // name
+    if (!data.name) {
+      newError.name = "Please enter the name";
+    } else if (data.name.length < 3) {
+      newError.name = "Name should be altleaste 4 letter";
+    }
+
+    // description
+
+    if (!data.description) {
+      newError.description = "Please provide the description";
+    } else if (data.description.length < 10) {
+      newError.description = "Description should be atleast 10 letters";
+    }
+    //price
+    if (!data.price) {
+      newError.price = "Please Enter the price";
+    }
+    // cetegory
+    if (!data.category) {
+      newError.category = "Please choose the category";
+    }
+    if (!image) {
+      newError.image = "Image required";
+    }
+
+    setError(newError);
+    return Object.keys(newError).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      
+        const formData = new FormData();
+        formData.append("name", data.name);
+        formData.append("description", data.description);
+        formData.append("price", data.price);
+        formData.append("category", data.category);
+        formData.append("image", image);
+        console.log(formData);
+        const response = await axios.post(`${url}/api/food/add`, formData);
+
+        if (response.status === 200) {
+          setData({
+            name: "",
+            description: "",
+            price: "",
+            category: "Salad",
+          });
+          setImage("");
+          toast.success(response.data.message);
+        } else {
+          toast.error(response.data.message);
+        }
+
+        console.log("response", response.status);
+      
+      
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <div className="add w-[70%] ml-[5vw] mt-[50px] text-gray-400 text-[16px]">
       <form className="flx-col gap-[20px] " onSubmit={handleSubmit}>
         <div className="add-image flx-col">
           <p>Upload Image</p>
+          {!image && <p className="text-red-500">{error.image}</p>}
           <label htmlFor="image">
             <img
               className="w-[120px]"
@@ -57,6 +121,7 @@ function Add() {
             value={data.name}
             placeholder="Type Here"
           />
+          {error.name && <p className="text-red-500">{error.name}</p>}
         </div>
         <div className="product-discription flx-col w-[40%]">
           <p>Product description</p>
@@ -68,8 +133,11 @@ function Add() {
             rows={"6"}
             placeholder="Write content here"
           ></textarea>
+          {error.description && (
+            <p className="text-red-500">{error.description}</p>
+          )}
         </div>
-        <div className="flex gap-2 w-[40%] ">
+        <div className="flex gap-2 lg:w-[40%] ">
           <div className="catogoryprice flx-col ">
             <p>Product category</p>
             <select
@@ -88,6 +156,7 @@ function Add() {
               <option value="Pasta">Pasta</option>
               <option value="Noodles">Noodles</option>
             </select>
+            {error.category && <p className="text-red-500">{error.category}</p>}
           </div>
           <div className="price flx-col">
             <p>Product Price</p>
@@ -99,6 +168,7 @@ function Add() {
               name="price"
               placeholder="$30"
             />
+            {error.price && <p className="text-red-500">{error.price}</p>}
           </div>
         </div>
         <button
