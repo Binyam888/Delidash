@@ -6,3 +6,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.flx-col{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
