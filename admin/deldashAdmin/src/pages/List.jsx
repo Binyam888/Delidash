@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { url } from "../assets/assets";
 import { toast } from "react-toastify";
+import { MdDelete } from "react-icons/md";
 function List() {
   const [item, setItem] = useState([]);
 
@@ -17,19 +18,19 @@ function List() {
       toast.error(e.message);
     }
   };
-  useEffect(() => {
+  useEffect(() => { // feching the data from the data base
     fechData();
   }, []);
-
+  // To delete data from the server
   const handleDelete = async (id) => {
     try {
       const deleteId = id;
       const deleteItem = await axios.delete(
         `${url}/api/food/delete/` + deleteId
       );
-      fechData();
+      await fechData();
       // alert(`you are delted the item for ${deleteId}`);
-      toast.success("Item Deleted Sucessfully")
+      toast.success("Item Deleted Sucessfully");
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +38,7 @@ function List() {
   return (
     <div className="tabl px-[20px]">
       <h1 className="font-bold my-[10px]">All Food List</h1>
-      <table className="min-w-full bg-white border-[2px] border-gray-300">
+      <table className="min-w-full bg-white border-[2px] border-gray-300 shadow">
         <thead>
           <tr className="bg-gray-100 ">
             <th className="py-2 px-4 border-b border-r-[3px]">Image</th>
@@ -56,7 +57,7 @@ function List() {
                     <img
                       src={`${url}/images/` + item.image}
                       alt=""
-                      className="w-[50px]"
+                      className="w-[50px] h-[50px]"
                     />
                   }
                 </td>
@@ -66,10 +67,10 @@ function List() {
                 </td>
 
                 <td className="border-r-[3px] p-[3px] px-[8px]">
-                  {item.price}
+                  ${item.price}
                 </td>
-                <td className="border-r-[0] p-[3px] px-[8px]">
-                  <button onClick={() => handleDelete(item._id)}>x</button>
+                <td className="border-r-[0] p-[3px] px-[8px] flex items-center justify-center align-middle pt-[20%]">
+                  <button onClick={() => handleDelete(item._id)}><MdDelete size={21}/></button>
                 </td>
               </tr>
             );
