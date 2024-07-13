@@ -79,9 +79,7 @@ function Add() {
             category: "Salad",
           });
           setImage("");
-          toast.success(response.data.message);
-        } else {
-          toast.error(response.data.message);
+          return toast.success(response.data.message);
         }
       } catch (error) {
         toast.error("error");
