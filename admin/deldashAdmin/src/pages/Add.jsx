@@ -21,7 +21,7 @@ function Add() {
     // name is used to identify which feild is need to change based on that the inputed value will be added
     setData((data) => ({ ...data, [name]: value }));
 
-    validateForm();
+    // validateForm()   real time form validation
   };
 
   const validateForm = () => {
@@ -58,16 +58,17 @@ function Add() {
   };
 
   const handleSubmit = async (e) => {
-    try {
-      e.preventDefault();
-      
-        const formData = new FormData();
-        formData.append("name", data.name);
-        formData.append("description", data.description);
-        formData.append("price", data.price);
-        formData.append("category", data.category);
-        formData.append("image", image);
-        console.log(formData);
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("description", data.description);
+    formData.append("price", data.price);
+    formData.append("category", data.category);
+    formData.append("image", image);
+
+    if (validateForm()) {
+      try {
         const response = await axios.post(`${url}/api/food/add`, formData);
 
         if (response.status === 200) {
@@ -82,13 +83,11 @@ function Add() {
         } else {
           toast.error(response.data.message);
         }
-
-        console.log("response", response.status);
-      
-      
-    } catch (error) {
-      console.error(error);
+      } catch (error) {
+        toast.error("error");
+      }
     }
+    toast.error("please fill all the area");
   };
   return (
     <div className="add w-[70%] ml-[5vw] mt-[50px] text-gray-400 text-[16px]">
