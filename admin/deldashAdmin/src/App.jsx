@@ -17,7 +17,7 @@ function App() {
       <div className="app-content flex">
         <Sidebar/>
         <Routes>
-          <Route path='/add' element={<Add/>}/>
+          <Route path='/' element={<Add/>}/>
           <Route path='/list' element={<List/>}/>
           <Route path='/order' element={<Orders/>}/>
 
