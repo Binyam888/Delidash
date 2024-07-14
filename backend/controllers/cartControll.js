@@ -31,7 +31,30 @@ export const addToCart = async (req,res)=>{
 
 //remove from user Cart
 
-const removeFromCart =(req,res)=>{
+export const removeFromCart = async(req,res)=>{
+    const userId = req.user.userId // decoded userId
+    const itemId = req.body.itemId
+
+    console.log(itemId)
+    console.log(userId)
+     try {
+      let userData = await User.findById(userId)
+      if(!userData){
+         return res.status(404).json({success:false,message:"user not found"})
+      }
+      let cart = userData.cart
+      console.log("cart before",cart)
+      if(cart[itemId]>0){
+         cart[itemId] -= 1;
+      }
+      await User.findByIdAndUpdate(userId,{cart})
+        console.log("cart after",cart)
+        res.status(200).json({success:true,message:"removed"})
+     } catch (error) {
+      console.log(error)
+     }
+
+
  
 }
 
