@@ -19,7 +19,7 @@ const userShema = mongoose.Schema({
     type: Object,
     default: {},
   },
-},{minimize:false},{timestamps:true});
+},{timestamps:true,minimize:false}); 
 
    userShema.pre("save", async function(next){
     if(!this.isModified("password")){
