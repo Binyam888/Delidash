@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { addFood, deleteFood, ListFood } from "../controllers/foodControllers.js";
 import multer from "multer";
+import { validateToken } from "../middlewares/validateToken.js";
 export const foodRouter = Router();
 
 //image storage
