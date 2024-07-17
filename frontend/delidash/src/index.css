@@ -8,6 +8,16 @@
  
   
 }
+ h2{
+  @apply  font-medium text-white text-[22px]
+ }
+/* #header{
+ 
+
+  background: url('/header_img.png') no-repeat;
+  background-size: contain;
+  position: relative;
+} */
 
 
 
