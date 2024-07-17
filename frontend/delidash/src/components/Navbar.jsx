@@ -37,7 +37,7 @@ function Navbar() {
 
         {mobile && (
           <div className=" bg-slate-500  fixed right-0 top-0  flex justify-center items-center w-full pt-[50px] pb-[20px] md:hidden">
-            <ul className="flex gap-4 flex-col  justify-center text-center">
+            <ul className="flex gap-4 flex-col  justify-center text-center ">
               <li>Home</li>
               <li>Menu</li>
               <li>mobile-app</li>

@@ -6,7 +6,7 @@ const ExploreMenu = ({ category, setCategory }) => {
       className="explore menu flex flex-col gap-[20px] mx-[10%] mb-[20px]"
       id="explore-menu"
     >
-      <h1 className=" text-[#262626] font-bold">Explore our menu</h1>
+      <h1 className=" text-[#262626] font-bold lg:text-[28px]">Explore our menu</h1>
       <p className="sm:max-w-[60%] text-[#808080]">
         Choose from a diverse menu featuring a delectable dishes. our mission is
         to Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore,
@@ -31,8 +31,8 @@ const ExploreMenu = ({ category, setCategory }) => {
                 alt="images"
                 className={
                   category === item.menu_name
-                    ? "border-[4px] border-red-500 rounded-[50%]"
-                    : "w-[7.5vw]  min-w-[80px] cursor-pointer rounded-[50%] transition-all duration-100"
+                    ? "border-[4px] border-red-400 rounded-[50%] min-w-[80px] w-[7.5vw]  p-[2px] transition-all  ease-in "
+                    : "w-[7.5vw]  min-w-[80px] cursor-pointer rounded-[50%] transition-all duration-300 hover:scale-105"
                 }
               />
               <p className="mt-[10px] text-[#747474] text-[16px] cursor-pointer ">
