@@ -14,6 +14,20 @@
  li{
   @apply font-semibold
  }
+
+ #footer-contets{
+  @apply flex flex-col items-start gap-[20px]
+ }
+
+ #footer-contets li{
+  @apply font-normal mb-[10px] cursor-pointer
+ }
+
+ .footer-social-icons img{
+  @apply w-[40px] m-[15px]
+ }
+
+
 /* #header{
  
 
