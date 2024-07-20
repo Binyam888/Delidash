@@ -4,10 +4,10 @@ const ExploreMenu = ({ category, setCategory }) => {
   return (
     <div
       className="explore menu flex flex-col gap-[20px] mx-[10%] mb-[20px]"
-      id="explore-menu"
+      
     >
-      <h1 className=" text-[#262626] font-bold lg:text-[28px]">Explore our menu</h1>
-      <p className="sm:max-w-[60%] text-[#808080]">
+      <h1 className=" text-[#262626] font-bold lg:text-[28px] text-[24px] mt-[-20px]"id="explore-menu">Explore our menu</h1>
+      <p className="sm:max-w-[60%] text-[#808080] max-sm:mt-[-18px max-sm:text-[14px]">
         Choose from a diverse menu featuring a delectable dishes. our mission is
         to Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore,
       </p>

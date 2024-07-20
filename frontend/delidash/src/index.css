@@ -6,6 +6,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-family:  Helvetica;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   
 }
  h2{
@@ -16,7 +17,7 @@
  }
 
  #footer-contets{
-  @apply flex flex-col items-start gap-[20px]
+  @apply flex flex-col items-start gap-[20px] 
  }
 
  #footer-contets li{
@@ -24,9 +25,12 @@
  }
 
  .footer-social-icons img{
-  @apply w-[40px] m-[15px]
+  @apply w-[40px] m-[15px] max-sm:m-[8px]
  }
 
+ .app-download-platform img{
+  @apply w-[120px] max-w-[180px] transition-[0.5s] transition-all cursor-pointer hover:scale-[1.05]
+ }
 
 /* #header{
  

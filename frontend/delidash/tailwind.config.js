@@ -7,10 +7,15 @@ export default {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        fadeDem:{
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         }
       },
       animation: {
         fadeIn: 'fadeIn 3s ease-in-out',
+        fadeDem: 'fadeIn 1s ease-in-out'
       }
     },
   },

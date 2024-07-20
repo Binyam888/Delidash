@@ -10,9 +10,9 @@ const FoodItem = ({ id, name, price, description, image }) => {
     
   return (
     <div className="food-item-container">
-      <div className="food-iem w-[100%] m-auto shadow-sm shadow-[#00000015]">
+      <div className="food-iem w-[100%] m-auto shadow-md shadow-[#00000015]  rounded-[10px]">
         <dvi className="food-item-img-container relative ">
-          <img src={image} alt="" className="w-[100%] rounded-t-[15px] " />
+          <img src={image} alt="" className="w-[100%] rounded-t-[10px] " />
           {!cartItem[id] ? (
             <img
               src={assets.add_icon_white}
@@ -40,14 +40,14 @@ const FoodItem = ({ id, name, price, description, image }) => {
           )}
         </dvi>
         <div className="food-item-info p-[20px]">
-          <div className="food-item-name-rating flex justify-between items-center mb-[10px]">
-            <p className="text-[20px] font-medium">{name}</p>
-            <img src={assets.rating_starts} alt="" className="w-[70px]" />
+          <div className="food-item-name-rating flex lg:flex-col lg:items-start xl:flex-row justify-between xl:items-center items-center mb-[10px]">
+            <p className="  md:text-[20px] font-medium">{name}</p>
+            <img src={assets.rating_starts} alt="" className="md:w-[70px] w-[65px] " />
           </div>
-          <p className="fooditem-description text-[#676767] text-[12px]">
+          <p className="fooditem-description text-[#676767] text-[12px]  md:text-[12px] ">
             {description}
           </p>
-          <p className="food-item-price text-red-400 text-[22px] font-medium my-[10px]">
+          <p className="food-item-price text-red-400 md:text-[22px] text-[14px] font-medium my-[10px]">
             ${price}
           </p>
         </div>

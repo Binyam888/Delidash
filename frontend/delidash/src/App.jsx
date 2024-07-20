@@ -5,12 +5,16 @@ import Home from './pages/Home'
 import PlaceOrder from './pages/PlaceOrder'
 import Cart from './pages/Cart'
 import Footer from './components/Footer'
+import { useState } from 'react'
+import LoginPopUp from './components/LoginPopUp'
 
 function App() {
+  const [login,setLogin]=useState(false)
   return (
     <>
+    {login ?<LoginPopUp setLogin={setLogin} /> : <></> }
     <div>
-      <Navbar/>
+      <Navbar setLogin={setLogin}/>
       <Routes>
         <Route path='/'  element={ <Home/> }/>
         <Route path='/order' element={ <PlaceOrder/> }/>
