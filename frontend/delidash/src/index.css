@@ -32,6 +32,12 @@
   @apply w-[120px] max-w-[180px] transition-[0.5s] transition-all cursor-pointer hover:scale-[1.05]
  }
 
+ .cart-total-details{
+  @apply flex justify-between text-[#555] max-md:text-[13px]
+ }
+.cart-details-container hr{
+  @apply bg-[#e2e2e2] h-[1px] my-[10px]
+}
 /* #header{
  
 

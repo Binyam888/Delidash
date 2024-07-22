@@ -42,7 +42,7 @@ const LoginPopUp = ({ setLogin }) => {
           />
         </div>
         <div className="loginbutton">
-          <button className="p-[10px] rounded-[4px] text-white bg-red-500 text-[15px] w-full">
+          <button className="p-[10px] rounded-[4px] text-white bg-[#ea5c1feb] text-[15px] w-full">
             {currentState === "Sign Up" ? "Create Account" : "Login"}
           </button>
         </div>
@@ -58,7 +58,7 @@ const LoginPopUp = ({ setLogin }) => {
               Create a new account?{" "}
               <span
                 onClick={() => setCurrentState("Sign Up")}
-                className="cursor-pointer font-bold text-red-400  "
+                className="cursor-pointer font-bold text-[#ea5c1fc9]  "
               >
                 Click here
               </span>
@@ -66,7 +66,7 @@ const LoginPopUp = ({ setLogin }) => {
           ) : (
             <p>
               Alredy have an account ?{" "}
-              <span onClick={() => setCurrentState("Login")} className="text-red-400 cursor-pointer font-bold">Login here</span>
+              <span onClick={() => setCurrentState("Login")} className="text-[#ea5c1fc9] cursor-pointer font-bold">Login here</span>
             </p>
           )}
         </div>

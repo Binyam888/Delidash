@@ -4,10 +4,10 @@ const Header = () => {
   return (
     <div className="outer sm:mx-[10%] mx-[3%]">
       <div
-        className="Header h-[48vw]  bg my-[30px]  w-full bg-[url('public/header_img.png')] bg-contain  bg-no-repeat relative rounded-md "
+        className="Header md:h-[38vw] h-[48vw]  bg my-[30px]  w-full bg-[url('header_img.png')] bg-contain  bg-no-repeat relative rounded-md "
         id="header"
       >
-        <div className="header-content absolute flex flex-col gap-2 md:max-w-[50%] max-sm:max-w-[60%]  md:bottom-[45%] bottom-[20%] max-md:bottom-[30%]  left-[12vw] animate-fadeIn ">
+        <div className="header-content absolute flex flex-col gap-2 md:max-w-[50%] max-sm:max-w-[60%]   bottom-[30%] max-md:bottom-[40%]  left-[12vw] animate-fadeIn ">
           <h2 className="lg:text-[30px] text-[16px]  md:text-[24px] xl:text-[50px]  leading-tight">
             Order your <br /> favourite food here
           </h2>

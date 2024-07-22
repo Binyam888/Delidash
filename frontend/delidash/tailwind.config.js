@@ -15,7 +15,7 @@ export default {
       },
       animation: {
         fadeIn: 'fadeIn 3s ease-in-out',
-        fadeDem: 'fadeIn 1s ease-in-out'
+        fadeDem: 'fadeIn 0.5s ease-in-out'
       }
     },
   },

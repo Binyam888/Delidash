@@ -9,7 +9,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
     useContext(StoreContext);
     
   return (
-    <div className="food-item-container">
+    <div className="food-item-container animate-fadeDem">
       <div className="food-iem w-[100%] m-auto shadow-md shadow-[#00000015]  rounded-[10px]">
         <dvi className="food-item-img-container relative ">
           <img src={image} alt="" className="w-[100%] rounded-t-[10px] " />
