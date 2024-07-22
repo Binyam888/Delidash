@@ -4,6 +4,23 @@ import { assets } from "../assets/assets";
 
 const LoginPopUp = ({ setLogin }) => {
   const [currentState, setCurrentState] = useState("Sign Up");
+  const [userData,setUserData] = useState({
+    name:"",
+    email:"",
+    password:""
+  })
+
+  const onChangeHandler=(e)=>{
+  
+   const {name,value} = e.target
+   setUserData(prev=>({...prev,[name]:value}))
+ 
+  }
+
+  const handleSubmit =(e)=>{
+    e.preventDefault()
+    console.log("userdata",userData)
+  }
   return (
     <div className="login-container absolute z-10 w-[100%] h-[100%] bg-[#00000090] grid animate-fadeDem  ">
       <form
@@ -26,6 +43,10 @@ const LoginPopUp = ({ setLogin }) => {
             <input
               type="text"
               placeholder="Name"
+              name="name"
+              required
+              value={userData.name}
+              onChange={onChangeHandler}
               className="ring-1   p-[10px] focus:outline-none ring-[#c9c9c9] rounded-[4px] w-full"
             />
           )}
@@ -33,16 +54,26 @@ const LoginPopUp = ({ setLogin }) => {
           <input
             type="email"
             placeholder="Your e-mail"
+            name="email"
+            value={userData.email}
+            onChange={onChangeHandler}
+            required
             className="ring-1  p-[10px]  focus:outline-none ring-[#c9c9c9] rounded-md w-full"
           />
           <input
             type="text"
             placeholder="Password"
+            name="password"
+            value={userData.password}
+            onChange={onChangeHandler}
+            required
             className="ring-1  p-[10px]  focus:outline-none ring-[#c9c9c9] rounded-md w-full"
           />
         </div>
         <div className="loginbutton">
-          <button className="p-[10px] rounded-[4px] text-white bg-[#ea5c1feb] text-[15px] w-full">
+          <button className="p-[10px] rounded-[4px] text-white bg-[#ea5c1feb] text-[15px] w-full"
+            onClick={handleSubmit}
+          >
             {currentState === "Sign Up" ? "Create Account" : "Login"}
           </button>
         </div>
