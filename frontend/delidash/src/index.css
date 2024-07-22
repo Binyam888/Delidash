@@ -36,7 +36,10 @@
   @apply flex justify-between text-[#555] max-md:text-[13px]
  }
 .cart-details-container hr{
-  @apply bg-[#e2e2e2] h-[1px] my-[10px]
+  @apply bg-[#e2e2e2] h-[1px] my-[10px] 
+}
+.place-order-left input{
+  @apply mb-[15px] w-[100%] p-[10px] ring-1 rounded-[4px] ring-[#c5c5c5] outline-[#ea5c1fc9]
 }
 /* #header{
  
