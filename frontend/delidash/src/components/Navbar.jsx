@@ -1,18 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { CiSearch } from "react-icons/ci";
-import { FaShoppingCart } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
-import { IoMenuSharp } from "react-icons/io5";
+
+import { IoLogOutOutline } from "react-icons/io5";
+import { IoBagHandleSharp } from "react-icons/io5";
 import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { StoreContext } from "../context/StoreContext";
+import {useNavigate} from "react-router-dom"
 function Navbar({ setLogin }) {
   const [mobile, setMobile] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [transition, setTransition] = useState(false);
+  const { token,setToken,getCartTotal,setCartItem } = useContext(StoreContext);
+
+  const navigate = useNavigate()
 
   const handleClick = () => {
     setMobile(true);
     setLogin(true);
+    setIsOpen(false)
+    navigate("/")
   };
+
+  const openPopUp = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const logout =()=>{
+    localStorage.removeItem("token")
+    setToken("")
+    setCartItem({})
+  }
   // useEffect(() => {
   //   const handleScroll = () => {
   //     if (window.scrollY > 80) {
@@ -56,22 +74,59 @@ function Navbar({ setLogin }) {
         {/* Above md screeen */}
         <div className="logos flex gap-[20px] cursor-pointer items-center ">
           <img src={assets.search_icon} alt="" className="w-[20px] h-[20px]" />
+          <div className="cart relative">
           <Link to={"/cart"}>
             {" "}
             <img
               src={assets.basket_icon}
               alt=""
               className="w-[20px] h-[20px]"
+
+              
             />
+            {/* if any item availble in cart it will show a dot on the cart icon */}
+            { getCartTotal() > 0 && <div className="dot w-[8px] h-[8px] bg-[#ea811ff5] rounded-full absolute z-10 top-[-5px] right-[-5px]"></div> }
+           
           </Link>
-          <img src={assets.profile_icon} alt="" className="w-[20px] h-[20px]" />
-          <button
-            onClick={handleClick}
-            className=" px-[15px] rounded-[50px] py-[5px] ring-2 ring-[#ea5c1fc9] hover:bg-slate-100"
-          >
-            {" "}
-            sign-in
-          </button>
+          </div>
+         
+
+          {/* Login codition */}
+          {token ? (
+            <div className="relative  ">
+              <img
+                onClick={openPopUp}
+                src={assets.profile_icon}
+                alt=""
+                className="w-[20px] h-[20px]"
+              />
+              {isOpen && (
+                <ul className=" flex flex-col absolute bg-[#ea811fe4] gap-[20px] z-10 w-[150px] py-[10px] text-[12px] px-[10px] mt-[10px] rounded-md shadow-md ">
+                  <li className="Order">
+                    <div className="flex items-center gap-1 justify-center" >
+                      <IoBagHandleSharp size={25} color="white" />
+                      <p className="hover:text-[#ea521ff5]">Order</p>
+                    </div>
+                  </li>
+                  <hr className="" />
+                  <li className="Logout">
+                    <div className="flex items-center gap-1 justify-center " onClick={logout}>
+                      <IoLogOutOutline size={25} color="white"  />
+                      <p className="hover:text-[#ea521ff5]">Logout</p>
+                    </div>
+                  </li>
+                </ul>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={handleClick}
+              className=" px-[15px] rounded-[50px] py-[5px] ring-2 ring-[#ea5c1fc9] hover:bg-slate-100"
+            >
+              {" "}
+              sign-in
+            </button>
+          )}
         </div>
 
         {/* mobile-screen */}

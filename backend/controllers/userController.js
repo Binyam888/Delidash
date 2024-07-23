@@ -18,11 +18,11 @@ export const registerUSer = async (req, res) => {
     if (userExist) {
       return res
         .status(400)
-        .json({ message: "user alredy exist try creating new one" });
+        .json({ success:false, message: "user alredy exist try creating new one" });
     }
     // validating emali it is correct format
     if (!validator.isEmail(email)) {
-      return res.status(400).json({ message: "please enter a valid email" });
+      return res.status(400).json({ success:false,message: "please enter a valid email" });
     }
 
     // creating new user
@@ -32,9 +32,11 @@ export const registerUSer = async (req, res) => {
       password,
     });
 
+    
+
     res
       .status(200)
-      .json({ message: "user created succesfully ", details: user });
+      .json({ success:true,message: "user created succesfully ", details: user });
   } catch (error) {
     console.log(error);
   }
@@ -58,10 +60,8 @@ export const loginUser = async (req, res) => {
       userId: user.id,
       userName:user.name
     };
-    const token = jwt.sign(payload, process.env.SECRET_KEY, {
-      expiresIn: "1h",
-    }); // creating jwt token
-    res.status(200).json({ message: "user logined sucessfully", token });
+    const token = jwt.sign(payload, process.env.SECRET_KEY, ); // creating jwt token
+    res.status(200).json({ success:true , message: "user logined sucessfully", token });
   } catch (error) {
     console.log(error);
   }

@@ -5,14 +5,14 @@ import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
 
 const FoodItem = ({ id, name, price, description, image }) => {
-  const { cartItem, addTocart, removeFromCart, setCartItem } =
+  const { cartItem, addTocart, removeFromCart, setCartItem ,url} =
     useContext(StoreContext);
     
   return (
     <div className="food-item-container animate-fadeDem">
       <div className="food-iem w-[100%] m-auto shadow-md shadow-[#00000015]  rounded-[10px]">
         <dvi className="food-item-img-container relative ">
-          <img src={image} alt="" className="w-[100%] rounded-t-[10px] " />
+          <img src={url+"/images/"+image} alt="" className="w-[100%] rounded-t-[10px] " />
           {!cartItem[id] ? (
             <img
               src={assets.add_icon_white}
