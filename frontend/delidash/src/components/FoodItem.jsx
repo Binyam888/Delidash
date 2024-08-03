@@ -9,9 +9,9 @@ const FoodItem = ({ id, name, price, description, image }) => {
     useContext(StoreContext);
     
   return (
-    <div className="food-item-container animate-fadeDem">
-      <div className="food-iem w-[100%] m-auto shadow-md shadow-[#00000015]  rounded-[10px]">
-        <dvi className="food-item-img-container relative ">
+    <div className="food-item-container animate-fadeDem ">
+      <div className="food-iem w-[100%] m-auto shadow-md shadow-[#00000015]  rounded-[10px] ">
+        <div className="food-item-img-container relative ">
           <img src={url+"/images/"+image} alt="" className="w-[100%] rounded-t-[10px] " />
           {!cartItem[id] ? (
             <img
@@ -38,7 +38,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
               />
             </div>
           )}
-        </dvi>
+        </div>
         <div className="food-item-info p-[20px]">
           <div className="food-item-name-rating flex lg:flex-col lg:items-start xl:flex-row justify-between xl:items-center items-center mb-[10px]">
             <p className="  md:text-[20px] font-medium">{name}</p>

@@ -2,6 +2,7 @@ import { createContext } from "react";
 
 import { useState } from "react";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 import axios from "axios";
 export const StoreContext = createContext(null);
 
@@ -47,12 +48,15 @@ const StoreContextProvider = ({ children }) => {
 
   //add to cart function
   const addTocart = async (itemId) => {
-    if (!cartItem[itemId]) {
-      setCartItem((prev) => ({ ...prev, [itemId]: 1 }));
-    } else {
-      setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    }
+   
     if (token) {
+
+   
+      if (!cartItem[itemId]) {
+        setCartItem((prev) => ({ ...prev, [itemId]: 1 }));
+      } else {
+        setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+      }
       try {
         console.log(token);
         const response = await axios.post(
@@ -68,7 +72,11 @@ const StoreContextProvider = ({ children }) => {
       } catch (error) {
         console.log("erooooor", error);
       }
+     return ;
     }
+    
+    console.log("client not loged in")
+    toast.warning("please loggin to continue")
   };
 
   // remove from cart function
