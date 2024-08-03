@@ -5,6 +5,7 @@ import { foodRouter } from "./routes/foodRoute.js"
 import { dbConfig } from "./config/dbConfig.js"
 import { userRouter } from "./routes/userRoute.js"
 import { cartRouter } from "./routes/cartRoute.js"
+import { orderRouter } from "./routes/orderRoute.js"
 
 
 //env cofiguration
@@ -26,4 +27,5 @@ app.use("/api/food",foodRouter)
 app.use("/api/user",userRouter)
 app.use("/images",express.static("uploads"))
 app.use("/api/cart",cartRouter)
+app.use("/api/order",orderRouter)
 

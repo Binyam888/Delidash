@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import delidash from "../../public/delidash.png"
 import { IoLogOutOutline } from "react-icons/io5";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { assets } from "../assets/assets";
@@ -30,6 +30,7 @@ function Navbar({ setLogin }) {
     localStorage.removeItem("token")
     setToken("")
     setCartItem({})
+    navigate("/")
   }
   // useEffect(() => {
   //   const handleScroll = () => {
@@ -50,13 +51,13 @@ function Navbar({ setLogin }) {
   // },[]);
 
   return (
-    <header className="Navbar md:px-[30px] bg-slate-50 w-full h-[50px] flex shadow-md py-[30px] ">
+    <header className="Navbar md:px-[30px] bg-slate-50 w-full h-[50px] flex  py-[40px] ">
       <nav className="flex md:justify-evenly w-full items-center justify-around">
         <Link to={"/"}>
           {" "}
-          <img src={assets.logo} alt="" className="w-[90px]" />
+          <img src={delidash} alt="" className="w-[100px]" />
         </Link>
-        <ul className="flex gap-3 max-md:hidden cursor-pointer  hover:underline-offset-8  ">
+        <ul className="flex gap-3 max-md:hidden cursor-pointer  hover:underline-offset-8 font-semibold  ">
           <Link to={"/"} className="hover:underline ">
             Home
           </Link>
@@ -101,11 +102,12 @@ function Navbar({ setLogin }) {
                 className="w-[20px] h-[20px]"
               />
               {isOpen && (
-                <ul className=" flex flex-col absolute bg-[#ea811fe4] gap-[20px] z-10 w-[150px] py-[10px] text-[12px] px-[10px] mt-[10px] rounded-md shadow-md ">
+                <ul className=" flex flex-col absolute bg-[#ea811fe4] right-0   gap-[20px] z-10 w-[150px] py-[10px] text-[12px] px-[10px] mt-[10px] rounded-md shadow-md ">
                   <li className="Order">
                     <div className="flex items-center gap-1 justify-center" >
-                      <IoBagHandleSharp size={25} color="white" />
-                      <p className="hover:text-[#ea521ff5]">Order</p>
+                    <Link to={"/order"} className="flex items-center  gap-1">  <IoBagHandleSharp size={25} color="white" />
+                      <p className="hover:text-[#ea521ff5] mt-2">Order</p>
+                      </Link>
                     </div>
                   </li>
                   <hr className="" />

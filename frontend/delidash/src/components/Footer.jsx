@@ -1,12 +1,13 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import delidash from "../../public/delidash.png"
 
 const Footer = () => {
   return (
     <div className="foooter text-[#d9d9d9] bg-[#323232] flex flex-col gap-[20px] pt-[80px] px-[10%] mt-[100px]" id="footer">
       <div className="footer-content w-[100%] grid md:grid-cols-[2fr,1fr,1fr] gap-[80px]">
         <div className="footer-co-left " id="footer-contets">
-          <img src={assets.logo} alt="" />
+          <img src={delidash} alt="" />
           <p className="max-sm:text-[14px]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
             necessitatibus illo accusantium cumque veniam nesciunt aut
