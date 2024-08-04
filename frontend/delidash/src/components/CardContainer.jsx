@@ -12,7 +12,7 @@ const CardContainer = () => {
           <SkeletonLoadingCard key={index}/>
       ))}
      <div className="loading absolute   w-[100%] h-full">
-        <div className="heading absolute top-[40%] left-[45%]">
+        <div className="heading absolute top-[5%] md:top-[40%] md:left-[45%] left-[30%]">
             <h1 className='text-[30px] font-bold animate-pulse'>Loading...</h1>
             <Spinner  size="md"   color="tomato"/>
         </div>

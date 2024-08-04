@@ -1,5 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
+
 import cors from "cors"
 import { foodRouter } from "./routes/foodRoute.js"
 import { dbConfig } from "./config/dbConfig.js"

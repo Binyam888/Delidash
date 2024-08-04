@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
 import {useNavigate} from "react-router-dom"
+import { toast } from "react-toastify";
 function Navbar({ setLogin }) {
   const [mobile, setMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,7 @@ function Navbar({ setLogin }) {
     setToken("")
     setCartItem({})
     navigate("/")
+    toast.warning("User Logged out")
   }
   // useEffect(() => {
   //   const handleScroll = () => {

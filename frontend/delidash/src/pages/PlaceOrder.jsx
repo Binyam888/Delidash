@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function PlaceOrder() {
-  const { getCartTotal } = useContext(StoreContext);
+  const { getCartTotal, food_list, cartItem ,url,token } = useContext(StoreContext);
 
   const [userData, setUserData] = useState({
     firstName: "",
@@ -15,18 +17,49 @@ function PlaceOrder() {
   });
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
-    
+
     setUserData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmitOrder = async (e) => {
     e.preventDefault();
-    console.log("userdata", userData);
+    // console.log("userdata", userData);
+    let orderItems = []; // creating an array to store all the food data that user has ordered
+    food_list.map((item) => {
+      if (cartItem[item._id] > 0) {
+        let itemInfo = item; // itrating each individual item , store the copy to itemInfo
+        itemInfo["quantity"] = cartItem[item._id];
+        // console.log("iteminfo",itemInfo)
+        orderItems.push(itemInfo);
+      }
+    });
+
+    let orderData = {   // storing all the data into a object to send to the server
+      items: orderItems,
+      address: userData,
+      amount: getCartTotal(),
+    };
+    let newUrl = url
+    const response = await axios.post(newUrl+"/api/order/place",orderData,{
+      headers:{
+        Authorization:`Bearer ${token} `
+      }
+    })
+    console.log("response for order",response)
+    if(response.data.success){
+      const {success_url} = response.data
+      
+      window.location.replace(success_url)
+    }else{
+      toast.error("unexpected error occured")
+    }
+   
+    // console.log("response for order" ,response)
   };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmitOrder}
       action=""
       className="place-order m-[5%]  grid md:grid-cols-2  justify-center px-[20px]   gap-[80px] mt-[100px]"
     >

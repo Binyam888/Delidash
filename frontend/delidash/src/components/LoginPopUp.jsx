@@ -3,6 +3,7 @@ import { useState } from "react";
 import { assets } from "../assets/assets";
 import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const LoginPopUp = ({ setLogin }) => {
@@ -32,18 +33,20 @@ const LoginPopUp = ({ setLogin }) => {
       try {
         const response = await axios.post(newUrl, userData);
         console.log("login response",response)
+        const {message} = response.data
+        toast.success(message)
         if (response.data.token) {
           console.log("response", response);
           setToken(response.data.token);
           localStorage.setItem("token", response.data.token);
           getCartData(localStorage.getItem("token"));
           setLogin(false);
-        } else {
-          alert(response.data.message);
-        }
+        } 
       } catch (error) {
+        console.log("checking error",error)
         const messsage = error.response.data.message;
-        alert(messsage);
+        // alert(messsage);
+        toast.error(messsage)
       }
       setCurrentState("Login");
     } catch (error) {

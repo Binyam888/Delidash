@@ -50,7 +50,7 @@ export const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json(" check the email user not found");
+      return res.status(400).json({success:false, message:"user not found "});
     }
     const chekPassword = await bcryprt.compare(password, user.password);
     if (!chekPassword) {
@@ -61,7 +61,7 @@ export const loginUser = async (req, res) => {
       userName:user.name
     };
     const token = jwt.sign(payload, process.env.SECRET_KEY, ); // creating jwt token
-    res.status(200).json({ success:true , message: "user logined sucessfully", token,payload });
+    res.status(200).json({ success:true , message: "User logged In successfully", token,payload });
   } catch (error) {
     console.log(error);
   }
