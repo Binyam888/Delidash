@@ -5,7 +5,7 @@ import FoodDisplay from '../components/FoodDisplay'
 import AppDownload from '../components/AppDownload'
 
 function Home() {
-    const [category,setCategory] =useState("All")
+    const [category,setCategory] =useState("Top Dishes")
   return (
     <div className='w-full '>
 

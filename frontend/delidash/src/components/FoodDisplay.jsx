@@ -10,11 +10,11 @@ const FoodDisplay = ({ category }) => {
 
   return (
     <div className="Food-display mx-[10%] mt-[30px]">
-      <h1 className="text-[24px] font-bold">Top dishes near you</h1>
+      <h1 className="text-[24px] font-bold">{category}</h1>
       {food_list.length != 0 ? (
         <div className="food-diplay-list mt-[30px] gap-[20px]  grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
           {food_list.map((item, index) => {
-            if (category === "All" || category === item.category) {
+            if (category === "Top Dishes" || category === item.category) {
               return (
                 <FoodItem
                   key={index + 1}
