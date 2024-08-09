@@ -22,7 +22,7 @@ const ExploreMenu = ({ category, setCategory }) => {
               key={index + 1}
               onClick={() =>
                 setCategory((prev) =>
-                  prev === item.menu_name ? "All" : item.menu_name
+                  prev === item.menu_name ? "Top Dishes" : item.menu_name
                 )
               }
             >
