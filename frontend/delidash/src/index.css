@@ -41,13 +41,13 @@
 .place-order-left input{
   @apply mb-[15px] w-[100%] p-[10px] ring-1 rounded-[4px] ring-[#c5c5c5] outline-[#ea5c1fc9]
 }
-/* #header{
+#header{
  
 
   background: url('/header_img.png') no-repeat;
   background-size: contain;
   position: relative;
-} */
+}
 
 /* #explore-menu-list::-webkit-scrollbar{
   display: none;

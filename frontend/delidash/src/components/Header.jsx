@@ -15,7 +15,7 @@ const Header = () => {
             Choose from a diverse menu featuring a delectable array of dishes
             carfted with the finest ingrediants and culinary
           </p>
-          <button className="border-none max-sm:w-[70px] max-sm:py-[7px] text-[#747474] px-[10px] py-[10px] font-medium bg-white xl:text-[13px] rounded-[50px] max-w-[100px] lg:w-[100px]   text-[10px]">
+          <button className="border-none max-sm:w-[8git 0px] max-sm:py-[7px] text-[#747474] px-[10px] py-[10px] font-medium bg-white xl:text-[13px] rounded-[50px] max-w-[100px] lg:w-[100px]   text-[10px]">
             View Menu
           </button>
         </div>
