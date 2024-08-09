@@ -12,7 +12,7 @@ const StoreContextProvider = ({ children }) => {
   const [food_list, setFood_list] = useState([]);
   const [username, setUsername] = useState("");
 
-  const url = "http://localhost:3000";
+  const url = "https://delidash-backend-ng0n.onrender.com";
 
   const fechData = async () => {
     let getUrl = url;
