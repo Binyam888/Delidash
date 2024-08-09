@@ -5,7 +5,7 @@ frontend/delidash/node_modules
 #backend
 
 backend/node_modules
-
+.env
 
 
 # Logs
