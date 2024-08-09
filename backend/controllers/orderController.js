@@ -10,7 +10,7 @@ const stripe = new Stripe('sk_test_51Pk5PBJvsOcOSYeNUBzrnGVICyKHlDi0fGBHlx8bDMl0
 export const placeOrder = async (req, res) => {
   // console.log(req.user)
 
-  const frontEndUrl = 'http://localhost:5173'
+  const frontEndUrl = 'https://delidash.onrender.com'
   const { userId } = req.user;
   // const {userId} = req.user
   const { items, address, amount } = req.body;
