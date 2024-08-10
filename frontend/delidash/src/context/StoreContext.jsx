@@ -12,7 +12,7 @@ const StoreContextProvider = ({ children }) => {
   const [food_list, setFood_list] = useState([]);
   const [username, setUsername] = useState("");
 
-  const url = "https://delidash-backend-ng0n.onrender.com";
+  const url = "https://delidash-backend-ng0n.onrender.com"; // backend url
 
   const fechData = async () => {
     let getUrl = url;
@@ -58,7 +58,7 @@ const StoreContextProvider = ({ children }) => {
         setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
       }
       try {
-        console.log(token);
+       
         const response = await axios.post(
           url + "/api/cart/add",
           { itemId },
@@ -76,7 +76,7 @@ const StoreContextProvider = ({ children }) => {
     }
     
     console.log("client not loged in")
-    toast.warning("please loggin to continue")
+    toast.warning("Please loggin to continue")
   };
 
   // remove from cart function

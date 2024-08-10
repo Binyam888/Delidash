@@ -12,21 +12,21 @@ import Lottie from "lottie-react";
 import { ToastContainer } from "react-toastify";
 import food from "./food.json";
 import Spinner from "./components/Spinner";
+import Verify from "./components/Verify";
 
 function App() {
   const [login, setLogin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => {                    
     const timer = setTimeout(() => {
       setLoading(false);
-      console.log(loading);
-      console.log("changed");
+      // console.log(loading);
+      // console.log("changed");
     }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
-  console.log("outside", loading);
 
   return (
     <>
@@ -47,6 +47,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/order" element={<PlaceOrder />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/verify" element={<Verify/>} />
           </Routes>
           <Footer />
         </div>
