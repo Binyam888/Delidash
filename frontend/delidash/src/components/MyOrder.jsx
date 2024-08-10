@@ -7,7 +7,7 @@ const MyOrder = () => {
   return (
     <div>
       <div className="lottie max-w-[330px]">
-        <h1>demo updated soon</h1>
+        <h1>Just a demo, will be updated soon </h1>
         <Lottie animationData={orderanimation} />
       </div>
     </div>
