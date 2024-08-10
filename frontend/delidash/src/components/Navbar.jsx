@@ -107,7 +107,7 @@ function Navbar({ setLogin }) {
                 <ul className=" flex flex-col absolute bg-[#ea811fe4] right-0   gap-[20px] z-10 w-[150px] py-[10px] text-[12px] px-[10px] mt-[10px] rounded-md shadow-md ">
                   <li className="Order">
                     <div className="flex items-center gap-1 justify-center" >
-                    <Link to={"/"} className="flex items-center  gap-1">  <IoBagHandleSharp size={25} color="white" />
+                    <Link to={"/myorders"} className="flex items-center  gap-1">  <IoBagHandleSharp size={25} color="white" />
                       <p className="hover:text-[#ea521ff5] mt-2">Order</p>
                       </Link>
                     </div>

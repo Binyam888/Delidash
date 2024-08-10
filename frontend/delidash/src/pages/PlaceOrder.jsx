@@ -39,7 +39,7 @@ function PlaceOrder() {
       address: userData,
       amount: getCartTotal(),
     };
-    let newUrl = url
+    let newUrl = url                                     // "http://localhost:3000"
     const response = await axios.post(newUrl+"/api/order/place",orderData,{
       headers:{
         Authorization:`Bearer ${token} `
@@ -48,7 +48,7 @@ function PlaceOrder() {
     console.log("response for order",response)
     if(response.data.success){
       const {success_url} = response.data
-      
+      console.log(success_url)
       window.location.replace(success_url)
     }else{
       toast.error("unexpected error occured")

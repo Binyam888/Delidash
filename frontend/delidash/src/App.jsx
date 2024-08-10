@@ -11,8 +11,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Lottie from "lottie-react";
 import { ToastContainer } from "react-toastify";
 import food from "./food.json";
-import Spinner from "./components/Spinner";
+
 import Verify from "./components/Verify";
+import MyOrder from "./components/MyOrder";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -48,6 +49,8 @@ function App() {
             <Route path="/order" element={<PlaceOrder />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/verify" element={<Verify/>} />
+            <Route path="/myorders" element={<MyOrder/>} />
+
           </Routes>
           <Footer />
         </div>

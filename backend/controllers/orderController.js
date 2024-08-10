@@ -10,7 +10,7 @@ const stripe = new Stripe('sk_test_51Pk5PBJvsOcOSYeNUBzrnGVICyKHlDi0fGBHlx8bDMl0
 export const placeOrder = async (req, res) => {
   // console.log(req.user)
 
-  const frontEndUrl = 'https://delidash.onrender.com'
+  const frontEndUrl = 'https://delidash.onrender.com'                             //'http://localhost:5173' dev.url
   const { userId } = req.user;
   // const {userId} = req.user
   const { items, address, amount } = req.body;
@@ -38,8 +38,8 @@ export const placeOrder = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items:line_items,
       mode:"payment",
-      success_url : `${frontEndUrl}/verify?success=true&orderId${orderModel._id}`,
-      cancel_url : `${frontEndUrl}/verify?success=false&orderId${orderModel._id}`
+      success_url : `${frontEndUrl}/verify?success=true&orderId=${orderModel._id}`,
+      cancel_url : `${frontEndUrl}/verify?success=false&orderId=${orderModel._id}`
     })
     res.status(200).json({success:true,success_url:session.url})
     // res.redirect(303,session.url)
@@ -48,3 +48,24 @@ export const placeOrder = async (req, res) => {
    
   }
 };
+
+
+export const verifyOrder = async (req,res)=>{
+
+  const {orderId,success} = req.body
+  try {
+    if(success=='true'){
+      await OrderModel.findByIdAndUpdate(orderId,{payment:true})
+      console.log("payment succesful")
+     return res.status(200).json({success:true,message:"payment succesful"})
+    }else{
+      await OrderModel.findByIdAndDelete(orderId)
+      console.log("payment failed")
+     return res.status(400).json({success:false,message:"payment failed"})
+    }
+    
+  } catch (error) {
+    res.status(400).json({success:false,message:error})
+  }
+
+}

@@ -38,7 +38,7 @@ export const ListFood = async (req, res) => {
     console.error(`Error :${error}`);
     return res
       .status(400)
-      .json({ message: "unable to fech the data", error: error });
+      .json({ message: "unable to fetch the data", error: error });
   }
 };
 
@@ -55,7 +55,7 @@ export const deleteFood = async (req, res) => {
     }
 
     const deleteItem = await FoodModel.findByIdAndDelete(id)
-    console.log("delted item",deleteItem)
+    console.log("deleted item",deleteItem)
     fs.unlink(`uploads/${deleteItem.image}`,(err)=>{
         if(err){
             console.log(`error deleting file :${err}`)
